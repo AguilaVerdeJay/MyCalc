@@ -161,9 +161,12 @@ class DataOperation {
         operator op=MainActivity.getOperator();
         if(op!= operator.BLANK){
             //Handle point
-            if((secondVal.indexOf(".")>-1) && val.equals(".")) {
-
+            //overriden indexOf statement to catch a second decimal
+            // throws exception if second decimal is entered
+            if((secondVal.indexOf(".",secondVal.indexOf(".") + 1>-1) && val.equals(".")) {
+                 throw new IllegalStateException("Unexpected value: " + val);
             }
+
             else{
 
                 //If variable is equal to zero, replace it by clicked value or concat in it
@@ -188,7 +191,11 @@ class DataOperation {
                 //If enter is clicked set all value to default
                 clear();
             }
-            if((firstVal.indexOf(".")>-1) && val.equals(".")){
+
+            //overriden indexOf statement to catch a second decimal
+            // throws exception if second decimal is entered
+            if((firstVal.indexOf(".",firstVal.indexOf(".") + 1>-1) && val.equals(".")) {
+                 throw new IllegalStateException("Unexpected value: " + val);
             }
             else{
 
